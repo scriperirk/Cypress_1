@@ -8,6 +8,7 @@ describe('login spec', () => {
   });
   
   it("Should not login with empty login", () => {
+    cy.login("test@test.com", "test");
     cy.contains("Log in").click();
     cy.get("#mail").type(" ");
     cy.get("#pass").type("test");
@@ -21,6 +22,7 @@ describe('login spec', () => {
   });
   
   it("Should not login with empty password", () => {
+    cy.login("test@test.com", "test");
     cy.contains("Log in").click();
     cy.get("#mail").type("test@test.com");
     cy.contains("Submit").click();
