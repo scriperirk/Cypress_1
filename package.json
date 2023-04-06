@@ -1,5 +1,13 @@
 {
   "devDependencies": {
-    "cypress": "^12.9.0"
+    "cypress": "^12.9.0",
+  },
+  "scripts": {
+    "test": "cypress run",
+    "web:headed": "cypress run -browser chrome --headed --config-file cypress.config.js",
+    "web:headless": "cypress run -browser chrome --headless --config-file cypress.config.js",
+    "phone:headed": "cypress run -browser chrome --headed --config-file cypress2.config.js",
+    "phone:headless": "cypress run -browser chrome --headless --config-file cypress2.config.js"
   }
 }
+
