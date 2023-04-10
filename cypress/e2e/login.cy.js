@@ -1,18 +1,23 @@
+
+let login;
+let pass;
+
 describe('login spec', () => {
   beforeEach(() => {
     cy.visit("/")
   })
   it("Should successfully login", () => {
-    cy.login("test@test.com", "test");
+    login = 'test@test.com';
+    pass = 'test';
+    cy.login(login, pass);
     cy.contains("Добро пожаловать test@test.com").should("be.visible");
   });
-  
+
   it("Should not login with empty login", () => {
-    cy.login("test@test.com", "test");
-    cy.contains("Log in").click();
-    cy.get("#mail").type(" ");
-    cy.get("#pass").type("test");
-    cy.contains("Submit").click();
+    login = ' ';
+    pass = 'test';
+    cy.login(login, pass);
+
     cy.get("#mail")
       .then(($el) => $el[0].checkValidity())
       .should("be.false");
@@ -20,9 +25,8 @@ describe('login spec', () => {
       .then(($el) => $el[0].validationMessage)
       .should("contain", "Заполните это поле.");
   });
-  
+
   it("Should not login with empty password", () => {
-    cy.login("test@test.com", "test");
     cy.contains("Log in").click();
     cy.get("#mail").type("test@test.com");
     cy.contains("Submit").click();
@@ -30,5 +34,5 @@ describe('login spec', () => {
       .then(($el) => $el[0].checkValidity())
       .should("be.false");
   });
-  
+
 })
