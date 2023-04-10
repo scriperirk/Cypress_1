@@ -58,4 +58,3 @@ Cypress.Commands.add("addBookNoFavorite", (book) => {
   cy.contains("Submit").click();
 });
 
-
